@@ -1,5 +1,6 @@
 # Clubhouse
 > Project from [TheOdinProject](https://www.theodinproject.com/), where I learn to become full-stack developer.
+
 In this project I’ll be building an exclusive clubhouse where my members can write anonymous posts. Inside the clubhouse, members can see who the author of a post is, but outside they can only see the story and wonder who wrote it.
 
 ## Purpose of the application
