@@ -14,9 +14,9 @@ I'll be mastering authentication skills showing author full name to only members
 - bootstrap
 
 ## TODO
-[x] Make models for User and Messages
-[ ] Create controllers for every expected GET and POST http request
-[ ] Create routes for all urls on site
-[ ] Create views for all routes
-[ ] Hash passwords when user sign up and login in
-[ ] Display correct view whenever user is logged in or isn't
+- [x] Make models for User and Messages
+- [ ] Create controllers for every expected GET and POST http request
+- [ ] Create routes for all urls on site
+- [ ] Create views for all routes
+- [ ] Hash passwords when user sign up and login in
+- [ ] Display correct view whenever user is logged in or isn't
