@@ -12,6 +12,9 @@ const bcrypt = require("bcryptjs");
 
 const indexRouter = require("./routes/index");
 
+const compression = require("compression");
+const helmet = require("helmet");
+
 const app = express();
 
 const mongoose = require("mongoose");
@@ -21,6 +24,15 @@ main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
 }
+
+app.use(compression());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+    },
+  })
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
