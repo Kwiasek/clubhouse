@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { DateTime } = require("luxon");
 const Schema = mongoose.Schema;
 
 const Message = new Schema({
@@ -22,6 +23,12 @@ const Message = new Schema({
   date: {
     type: Date,
     required: true,
-    default: new Date.now(),
+    default: Date.now(),
   },
 });
+
+Message.virtual("date_short").get(function () {
+  return DateTime.fromJSDate(this.date).toHTTP();
+});
+
+module.exports = mongoose.model("message", Message);

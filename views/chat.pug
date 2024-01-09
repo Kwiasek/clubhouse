@@ -1,0 +1,68 @@
+extends layout 
+
+block content 
+    h1 Chat
+
+    div.container
+        if user 
+            if user.admin 
+                div.border.border-1.border-dark.rounded-2.h-100.p-3.overflow-y-auto.mb-2.mh-75.mw-100
+                    if messages.length > 0
+                        each message in messages 
+                            div 
+                                h4 #{message.user.fname} #{message.user.lname}:
+                                p.text-secondary.text-wrap= message.date_short
+                                strong= message.title
+                                p.text-wrap= message.text 
+                                form(method="POST" action="/delete-message")
+                                    input(type="hidden" name="message" value=message._id)
+                                    button.btn.btn-danger(type="submit") Delete
+                                hr
+                    else
+                        strong There are no messages. Be first to send one!
+                div.container
+                    form(method="POST")
+                        input(type="hidden" name="user" value=user._id)
+                        input.form-control.mb-1(type="text" name="title" placeholder="Title")
+                        input.form-control.mb-1(type="text" name="text" placeholder="Message")
+                        button.btn.btn-success.mb-1(type="Submit") Send message
+                    if errors 
+                        hr
+                        ul
+                            each error in errors 
+                                li=error.msg
+            else
+                div.border.border-1.border-dark.rounded-2.h-100.p-3.overflow-y-auto.mb-2.mh-75.mw-100
+                    if messages.length > 0
+                        each message in messages 
+                            div 
+                                h4 #{message.user.fname} #{message.user.lname}:
+                                p.text-secondary= message.date_short
+                                strong= message.title
+                                p= message.text 
+                                hr
+                    else
+                        strong There are no messages. Be first to send one!
+                div.container
+                    form(method="POST")
+                        input(type="hidden" name="user" value=user._id)
+                        input.form-control.mb-1(type="text" name="title" placeholder="Title")
+                        input.form-control.mb-1(type="text" name="text" placeholder="Message")
+                        button.btn.btn-success.mb-1(type="Submit") Send message
+                    if errors 
+                        hr
+                        ul
+                            each error in errors 
+                                li=error.msg
+        else
+            div.border.border-1.border-dark.rounded-2.h-100.p-3.overflow-y-auto.mb-2.mh-75.mw-100
+                if messages.length > 0
+                    each message in messages
+                        div 
+                            h4 User:
+                            em.text-secondary= message.date_short
+                            strong.d-block= message.title
+                            p= message.text
+                else 
+                    strong There are no messages.
+        

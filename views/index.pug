@@ -2,4 +2,7 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  if user
+    h3 Welcome back #{user.fname}!
+  else 
+    h3 Please Sign Up or Sing In

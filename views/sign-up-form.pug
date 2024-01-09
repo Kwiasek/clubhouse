@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+    h2.mb-3= title
+    form.container(action="" method="POST" autocomplete="on")
+        div.mb-3
+            label.form-label(for="fname") First name: 
+            input.form-control#fname(type="text" name="fname")
+        div.mb-3
+            label.form-label(for="lname") Last name: 
+            input.form-control#lname(type="text" name="lname")
+        div.mb-3
+            label.form-label(for="username") Username: <span class="text-body-tertiary">(can be email)</span>
+            input.form-control#username(type="text" name="username")
+        div.mb-3
+            label.form-label(for="password") Password: 
+            input.form-control#password(type="password" name="password")
+        div.mb-3
+            label.form-label(for="password_c") Confirm password: 
+            input.form-control#password_c(type="password" name="password_c")
+        button.btn.btn-primary(type="submit") Sign Up
+        if errors
+            hr
+            ul
+                each error in errors 
+                    li= error.msg
