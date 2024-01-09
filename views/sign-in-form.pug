@@ -15,4 +15,5 @@ block content
             ul
                 each error in errors 
                     li= error.msg
-    
+        if user_not_found
+            p= user_not_found

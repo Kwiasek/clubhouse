@@ -5,13 +5,13 @@ block content
     form.container(action="" method="POST" autocomplete="on")
         div.mb-3
             label.form-label(for="fname") First name: 
-            input.form-control#fname(type="text" name="fname")
+            input.form-control#fname(type="text" name="fname" value=(undefined==baduser ? "" : baduser.fname ))
         div.mb-3
             label.form-label(for="lname") Last name: 
-            input.form-control#lname(type="text" name="lname")
+            input.form-control#lname(type="text" name="lname" value=(undefined==baduser ? "" : baduser.lname ))
         div.mb-3
             label.form-label(for="username") Username: <span class="text-body-tertiary">(can be email)</span>
-            input.form-control#username(type="text" name="username")
+            input.form-control#username(type="text" name="username" value=(undefined==baduser ? "" : baduser.username ))
         div.mb-3
             label.form-label(for="password") Password: 
             input.form-control#password(type="password" name="password")

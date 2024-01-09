@@ -3,17 +3,17 @@ extends layout
 block content 
     h1 Chat
 
-    div.container
+    div.container.h-100
         if user 
             if user.admin 
-                div.border.border-1.border-dark.rounded-2.h-100.p-3.overflow-y-auto.mb-2.mh-75.mw-100
+                div.border.border-1.border-dark.rounded-2.p-3.overflow-x-hidden.overflow-y-auto.mb-1(style="height: 90%")
                     if messages.length > 0
                         each message in messages 
                             div 
                                 h4 #{message.user.fname} #{message.user.lname}:
                                 p.text-secondary.text-wrap= message.date_short
                                 strong= message.title
-                                p.text-wrap= message.text 
+                                p.text-break= message.text 
                                 form(method="POST" action="/delete-message")
                                     input(type="hidden" name="message" value=message._id)
                                     button.btn.btn-danger(type="submit") Delete
@@ -32,14 +32,14 @@ block content
                             each error in errors 
                                 li=error.msg
             else
-                div.border.border-1.border-dark.rounded-2.h-100.p-3.overflow-y-auto.mb-2.mh-75.mw-100
+                div.border.border-1.border-dark.rounded-2.p-3.overflow-x-hidden.overflow-y-auto.mb-1(style="height: 90%")
                     if messages.length > 0
                         each message in messages 
                             div 
                                 h4 #{message.user.fname} #{message.user.lname}:
                                 p.text-secondary= message.date_short
                                 strong= message.title
-                                p= message.text 
+                                p.text-break= message.text 
                                 hr
                     else
                         strong There are no messages. Be first to send one!
@@ -55,14 +55,15 @@ block content
                             each error in errors 
                                 li=error.msg
         else
-            div.border.border-1.border-dark.rounded-2.h-100.p-3.overflow-y-auto.mb-2.mh-75.mw-100
+            div.border.border-1.border-dark.rounded-2.p-3.overflow-x-hidden.overflow-y-auto(style="height: 100%")
                 if messages.length > 0
                     each message in messages
                         div 
                             h4 User:
                             em.text-secondary= message.date_short
                             strong.d-block= message.title
-                            p= message.text
+                            p.text-break= message.text
+                            hr
                 else 
                     strong There are no messages.
         
